@@ -15,15 +15,15 @@ module.exports= {
 			callback(results);
 		});
 	},
-	insert: function(user, callback){
-		var sql = "INSERT INTO job(name,username, password,companyname,contactno, type) VALUES ('"+user.name+"','"+user.username+"','"+user.password+"','"+user.companyname+"','"+user.contactno+"','"+user.type+"')";
+	insert: function(job, callback){
+		var sql = "INSERT INTO job(companyname,joblocation, jobtitle,salary) VALUES ('"+job.companyname+"','"+job.joblocation+"','"+job.title+"','"+job.salary+"')";
 		//console.log(sql);
 		db.execute(sql,function(status){
 			callback(status);
 		});
 	},
-	update:function(user, callback){
-		var sql = "UPDATE job SET name='"+user.name+"',companyname='"+user.companyname+"',contactno='"+user.contactno+"',username='"+user.username+"',password='"+user.password+"',type='"+user.type+"' WHERE id = '"+user.id+"'";
+	update:function(job, callback){
+		var sql = "UPDATE job SET name='"+job.name+"',companyname='"+job.companyname+"',contactno='"+job.contactno+"',jobname='"+job.jobname+"',password='"+job.password+"',type='"+job.type+"' WHERE id = '"+job.id+"'";
 		console.log(sql);
 		db.execute(sql,function(status){
 			callback(status);

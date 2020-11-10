@@ -1,5 +1,5 @@
 const express 	= require('express');
-const userModel = require('../models/userModel');
+const jobModel = require('../models/jobModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -11,83 +11,73 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/create', (req, res)=>{
-	res.render('user/create');
+	res.render('job/create');
 });
-
 
 router.post('/create', (req, res)=>{
 	
-	var user = {
-		name: req.body.name,
-		username: req.body.username,
-		password: req.body.password,
+	var job = {
 		companyname: req.body.companyname,
-		contactno: req.body.contactno,
-		type: 1
+		joblocation: req.body.joblocation,
+		title:req.body.title,
+		salary: req.body.salary
 	};
 	
-	userModel.insert(user,function(status){
+	jobModel.insert(job,function(status){
 		if(status){
-			res.redirect('/Admin_home/userlist');
+			res.redirect('/Employee_home/joblist');
 		}else{
-			res.render('user/create');
+			res.render('job/create');
 		}
 	});
 });
 
 router.get('/edit/:id', (req, res)=>{
 	
-	userModel.getById(req.params.id,function(result){
-			var user = {
-				name: result.name,
-				username: result.username,
-				password: result.password,
-				companyname: result.companyname,
-				contactno: result.contactno,
-				type: 1
-			};
-			res.render('user/edit', user);
+	jobModel.getById(req.params.id,function(result){
+		var job = {
+			companyname: req.body.companyname,
+			joblocation: req.body.joblocation,
+			title:req.body.title,
+			salary: req.body.salary
+		};
+			res.render('job/edit', job);
 	});
 });
 
 router.post('/edit/:id', (req, res)=>{
-	var user = {
-		id:req.params.id,
-		name: req.body.name,
-		username: req.body.username,
-		password: req.body.password,
+	var job = {
 		companyname: req.body.companyname,
-		contactno: req.body.contactno,
-		type: 1
+		joblocation: req.body.joblocation,
+		title:req.body.title,
+		salary: req.body.salary
 	};
-	userModel.update(user,function(status){
+	jobModel.update(job,function(status){
 		if(status){
-			res.redirect('/Admin_home/userlist');
+			res.redirect('/Admin_home/joblist');
 		}
 		else{
-			res.render('user/edit', user);
+			res.render('job/edit', job);
 		}
 	});
 });
 
 router.get('/delete/:id', (req, res)=>{
-	userModel.getById(req.params.id,function(result){
-		var user = {
-			name: result.name,
-			username: result.username,
-			password: result.password,
-			companyname: result.companyname,
-			contactno: result.contactno,
-			type: 1
+	jobModel.getById(req.params.id,function(result){
+		var job = {
+			companyname: req.body.companyname,
+			joblocation: req.body.joblocation,
+			title:req.body.title,
+			salary: req.body.salary
 		};
-		res.render('user/delete', user);
+		res.render('job/delete', job);
 	});
 });
 
 router.post('/delete/:id', (req, res)=>{
-	userModel.delete(req.params.id,function(status){
+	jobModel.delete(req.params.id,function(status){
 		if(status){
-			res.redirect('/Admin_home/userlist');
+			res.redirect('/Admin_home/joblist');
 		}
 	});
 });
