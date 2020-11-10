@@ -20,7 +20,7 @@ router.post('/', (req, res)=>{
 		}
 		else if(status == 1){
 			res.cookie('uname', req.body.username);
-			res.redirect('/Admin_employee');
+			res.redirect('/Employee_home');
 		}
 		else{
 			res.redirect('/login');

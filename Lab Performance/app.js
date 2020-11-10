@@ -3,7 +3,6 @@ const express 			= require('express');
 const bodyParser 		= require('body-parser');
 const exSession 		= require('express-session');
 const cookieParser 		= require('cookie-parser');
-
 const login				= require('./controllers/login');
 const logout			= require('./controllers/logout');
 const admin_home		= require('./controllers/Admin_home');
@@ -25,7 +24,7 @@ app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: fals
 
 app.use('/login', login);
 app.use('/Admin_home', admin_home);
-app.use('Employee_home',employee_home);
+app.use('/Employee_home',employee_home);
 app.use('/logout', logout);
 app.use('/user', user);
 

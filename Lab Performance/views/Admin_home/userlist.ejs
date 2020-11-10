@@ -9,8 +9,11 @@
 	<a href="/Admin_home">Back</a> | 
 	<a href="/logout">logout</a> 
 	<br>
-
-	<table border="1">
+	<div>
+        <input type="text" name="" id="search_text" placeholder="Search Employee" onkeyup="search()">
+        </div>
+    </div>
+	<table border="1" name="table">
 		<tr>
 			<td>ID</td>
 			<td>Name</td>
@@ -60,3 +63,22 @@
 
 </body>
 </html>
+
+<script>
+	function get(id){
+		return document.getElementById(id);
+	}
+	function search(){
+		var text = get("search_text").value;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange=function(){
+			if(this.readyState == 4 && this.status == 200 ){
+				document.getElementById("table").innerHTML = this.responseText;
+				alert(this.responseText);
+			}
+		};
+		xhttp.open("GET","Admin_home/searchEmployee.js?key="+text,true);
+		xhttp.send();
+
+	}
+</script>

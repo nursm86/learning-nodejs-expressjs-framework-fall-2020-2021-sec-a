@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Job List</title>
+</head>
+<body>
+	<h1> Job list</h1>
+
+	<a href="/Employee_home">Back</a> | 
+	<a href="/logout">logout</a> 
+	<br>
+	<table border="1" name="table">
+		<tr>
+			<td>ID</td>
+			<td>Company Name</td>
+			<td>Job Location</td>
+			<td>Job Title</td>
+			<td>Salary</td>
+			<td>Action</td>
+		</tr>
+		
+		<!-- <% for(var i=0; i < jobs.length; i++){ %>
+			
+			<tr>
+				<td><%= jobs[i][0] %></td>
+				<td><%= jobs[i][1] %></td>
+				<td><%= jobs[i][2] %></td>
+				<td><%= jobs[i][3] %></td>
+			</tr>
+
+		<% } %> -->
+
+		<% 
+			jobs.forEach( function(job){ %>
+			<tr>
+				<td><%= job.id %></td>
+				<td><%= job.companyname %></td>
+				<td><%= job.joblocation %></td>
+				<td><%= job.jobtitle %></td>
+				<td><%= job.salary %></td>
+				<td>
+					<a href="/user/edit/<%= job.id %>">Edit</a> |
+					<a href="/user/delete/<%= job.id %>">Delete</a>
+				</td>
+			</tr>
+
+		<%
+			}); 
+		%>
+		
+	</table>
+
+</body>
+</html>
