@@ -25,7 +25,7 @@ router.post('/create', (req, res)=>{
 	
 	userModel.insert(user,function(status){
 		if(status){
-			res.redirect('/home/userlist');
+			res.redirect('/Admin_home/userlist');
 		}else{
 			res.render('user/create');
 		}
