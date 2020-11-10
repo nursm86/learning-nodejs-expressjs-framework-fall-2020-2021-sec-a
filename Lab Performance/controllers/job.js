@@ -36,10 +36,10 @@ router.get('/edit/:id', (req, res)=>{
 	
 	jobModel.getById(req.params.id,function(result){
 		var job = {
-			companyname: req.body.companyname,
-			joblocation: req.body.joblocation,
-			title:req.body.title,
-			salary: req.body.salary
+			companyname: result.companyname,
+			joblocation: result.joblocation,
+			title: result.jobtitle,
+			salary: result.salary
 		};
 			res.render('job/edit', job);
 	});
@@ -47,6 +47,7 @@ router.get('/edit/:id', (req, res)=>{
 
 router.post('/edit/:id', (req, res)=>{
 	var job = {
+		id : req.params.id,
 		companyname: req.body.companyname,
 		joblocation: req.body.joblocation,
 		title:req.body.title,
@@ -54,7 +55,7 @@ router.post('/edit/:id', (req, res)=>{
 	};
 	jobModel.update(job,function(status){
 		if(status){
-			res.redirect('/Admin_home/joblist');
+			res.redirect('/Employee_home/joblist');
 		}
 		else{
 			res.render('job/edit', job);

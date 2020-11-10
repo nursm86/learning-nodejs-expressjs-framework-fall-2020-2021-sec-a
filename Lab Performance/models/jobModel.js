@@ -23,7 +23,7 @@ module.exports= {
 		});
 	},
 	update:function(job, callback){
-		var sql = "UPDATE job SET name='"+job.name+"',companyname='"+job.companyname+"',contactno='"+job.contactno+"',jobname='"+job.jobname+"',password='"+job.password+"',type='"+job.type+"' WHERE id = '"+job.id+"'";
+		var sql = "UPDATE job SET companyname='"+job.companyname+"',joblocation='"+job.joblocation+"',jobtitle='"+job.title+"',salary='"+job.salary+"' WHERE id = '"+job.id+"'";
 		console.log(sql);
 		db.execute(sql,function(status){
 			callback(status);
