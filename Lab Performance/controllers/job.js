@@ -66,19 +66,19 @@ router.post('/edit/:id', (req, res)=>{
 router.get('/delete/:id', (req, res)=>{
 	jobModel.getById(req.params.id,function(result){
 		var job = {
-			companyname: req.body.companyname,
-			joblocation: req.body.joblocation,
-			title:req.body.title,
-			salary: req.body.salary
+			companyname: result.companyname,
+			joblocation: result.joblocation,
+			title: result.jobtitle,
+			salary: result.salary
 		};
-		res.render('job/delete', job);
+			res.render('job/delete', job);
 	});
 });
 
 router.post('/delete/:id', (req, res)=>{
 	jobModel.delete(req.params.id,function(status){
 		if(status){
-			res.redirect('/Admin_home/joblist');
+			res.redirect('/Employee_home/joblist');
 		}
 	});
 });
