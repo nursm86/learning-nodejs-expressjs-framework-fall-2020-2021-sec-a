@@ -10,7 +10,12 @@ module.exports= {
 		});
 	},
 	getById: function(id, callback){
-
+		var sql = "select * from users where id='"+id+"'";
+		db.getResults(sql, function(results){
+			if(results.length >0 ){
+				callback(results[0]);
+			}
+		});
 	},
 	getAll: function(callback){
 		var sql = "select * from users";
@@ -26,7 +31,11 @@ module.exports= {
 		});
 	},
 	update:function(user, callback){
-
+		var sql = "UPDATE users SET name='"+user.name+"',companyname='"+user.companyname+"',contactno='"+user.contactno+"',username='"+user.username+"',password='"+user.password+"',type='"+user.type+"' WHERE id = '"+user.id+"'";
+		console.log(sql);
+		db.execute(sql,function(status){
+			callback(status);
+		});
 	},
 	delete: function(id, callback){
 
