@@ -19,7 +19,7 @@ module.exports= {
 		});
 	},
 	insert: function(user, callback){
-		var sql = "INSERT INTO users(username, password, type) VALUES ('"+user.username+"','"+user.password+"','"+user.type+"')";
+		var sql = "INSERT INTO users(name,username, password,companyname,contactno, type) VALUES ('"+user.name+"','"+user.username+"','"+user.password+"','"+user.companyname+"','"+user.contactno+"','"+user.type+"')";
 		//console.log(sql);
 		db.execute(sql,function(status){
 			callback(status);

@@ -18,9 +18,12 @@ router.get('/create', (req, res)=>{
 router.post('/create', (req, res)=>{
 	
 	var user = {
+		name: req.body.name,
 		username: req.body.username,
 		password: req.body.password,
-		type: req.body.type
+		companyname: req.body.companyname,
+		contactno: req.body.contactno,
+		type: 1
 	};
 	
 	userModel.insert(user,function(status){
