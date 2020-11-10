@@ -13,10 +13,8 @@
 	<table border="1">
 		<tr>
 			<td>ID</td>
-			<td>Name</td>
-			<td>User Name</td>
-			<td>Company Name</td>
-			<td>Contact No</td>
+			<td>Username</td>
+			<td>Password</td>
 			<td>Type</td>
 			<td>Action</td>
 		</tr>
@@ -36,16 +34,9 @@
 			users.forEach( function(std){ %>
 			<tr>
 				<td><%= std.id %></td>
-				<td><%= std.name %></td>
 				<td><%= std.username %></td>
-				<td><%= std.companyname %></td>
-				<td><%= std.contactno %></td>
-				<% if(std.type == 0){%>
-					<td>Admin</td>
-				<%}
-				else(std.type == 1){%>
-					<td>Employee</td>
-				<%}%>
+				<td><%= std.password %></td>
+				<td><%= std.type %></td>
 				<td>
 					<a href="/user/edit/<%= std.id %>">Edit</a> |
 					<a href="/user/delete/<%= std.id %>">Delete</a>
