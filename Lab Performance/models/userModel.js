@@ -38,6 +38,10 @@ module.exports= {
 		});
 	},
 	delete: function(id, callback){
-
+		var sql = "DELETE FROM users WHERE id = '"+id+"'";
+		console.log(sql);
+		db.execute(sql,function(status){
+			callback(status);
+		});
 	}
 }
