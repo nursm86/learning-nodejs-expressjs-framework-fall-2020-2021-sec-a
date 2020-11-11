@@ -45,7 +45,7 @@ module.exports= {
 		});
 	},
 	search: function(user, callback){
-		var sql = "SELECT * FROM users WHERE username LIKE '%"+user.username+"%'";
+		var sql = "SELECT * FROM users WHERE "+user.searchby+" LIKE '%"+user.search+"%'";
 		db.getResults(sql, function(results){
 			if(results.length > 0){
 				callback(results);

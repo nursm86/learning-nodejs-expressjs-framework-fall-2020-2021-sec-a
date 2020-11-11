@@ -1,12 +1,14 @@
 $(document).ready(function(){
 	$('#search').on('keyup',function(){
-		var name = $("#search").val();
+		var search = $("#search").val();
+		var searchby = $("#searchby").val();
 
 		$.ajax({
 			url: '/Admin_home/search',
 			method: 'post',
 			datatype : 'json',
-			data : {'username':name},
+			data : {'search':search,
+					'searchby':searchby},
 			success:function(response){
 				if(response.user !== 'error'){
 					var tableBody="<tr><td>ID</td><td>Name</td><td>User Name</td><td>Company Name</td><td>Contact No</td><td>Type</td><td>Action</td></tr>";

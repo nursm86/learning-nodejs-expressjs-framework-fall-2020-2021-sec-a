@@ -25,7 +25,8 @@ router.get('/userlist', (req, res)=>{
 
 router.post('/search',(req,res)=>{
 	var user = {
-		username : req.body.username
+		search : req.body.search,
+		searchby: req.body.searchby
 	};
 	userModel.search(user, function(results){
 		if(results){

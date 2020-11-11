@@ -12,8 +12,14 @@
 	<a href="/logout">logout</a> 
 	<br>
 	<div>
+		<select id="searchby">
+			<option selected hidden>Searh By</option>
+			<option value="name">Name</option>
+			<option value="username">User Name</option>
+			<option value="companyname">Company Name</option>
+			<option value="contactno">Contact No</option>
+		</select>
         <input type="text" name="search" id="search" placeholder="Search Employee">
-        </div>
     </div>
 	<table border="1" id="table">
 		<tr>
