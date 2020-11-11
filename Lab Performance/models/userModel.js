@@ -43,5 +43,15 @@ module.exports= {
 		db.execute(sql,function(status){
 			callback(status);
 		});
+	},
+	search: function(user, callback){
+		var sql = "SELECT * FROM users WHERE username LIKE '%"+user.username+"%'";
+		db.getResults(sql, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(false);
+			}
+		});
 	}
-}
+};

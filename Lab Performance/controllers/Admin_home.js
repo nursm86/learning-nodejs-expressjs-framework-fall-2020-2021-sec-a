@@ -21,6 +21,19 @@ router.get('/userlist', (req, res)=>{
 		res.render('Admin_home/userlist', {users: results});
 	});
 
-})
+});
+
+router.post('/search',(req,res)=>{
+	var user = {
+		username : req.body.username
+	};
+	userModel.search(user, function(results){
+		if(results){
+			res.json({user:results});
+		}else{
+			res.json({user:'error'});
+		}
+	});
+});
 
 module.exports = router;

@@ -17,11 +17,10 @@ app.set('view engine', 'ejs');
 
 
 //middleware
-app.use('/abc', express.static('assets'))
+app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: false}));
-
 
 app.use('/login', login);
 app.use('/Admin_home', admin_home);

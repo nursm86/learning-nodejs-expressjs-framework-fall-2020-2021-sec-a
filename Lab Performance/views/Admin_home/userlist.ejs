@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>User List</title>
+	<script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src = "/assets/js/main.js"></script>
 </head>
 <body>
 	<h1> Userlist</h1>
@@ -10,10 +12,10 @@
 	<a href="/logout">logout</a> 
 	<br>
 	<div>
-        <input type="text" name="" id="search_text" placeholder="Search Employee" onkeyup="search()">
+        <input type="text" name="search" id="search" placeholder="Search Employee">
         </div>
     </div>
-	<table border="1" name="table">
+	<table border="1" id="table">
 		<tr>
 			<td>ID</td>
 			<td>Name</td>
@@ -34,7 +36,6 @@
 			</tr>
 
 		<% } %> -->
-
 		<% 
 			users.forEach( function(std){ %>
 			<tr>
@@ -63,22 +64,3 @@
 
 </body>
 </html>
-
-<script>
-	function get(id){
-		return document.getElementById(id);
-	}
-	function search(){
-		var text = get("search_text").value;
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange=function(){
-			if(this.readyState == 4 && this.status == 200 ){
-				document.getElementById("table").innerHTML = this.responseText;
-				alert(this.responseText);
-			}
-		};
-		xhttp.open("GET","Admin_home/searchEmployee.js?key="+text,true);
-		xhttp.send();
-
-	}
-</script>
