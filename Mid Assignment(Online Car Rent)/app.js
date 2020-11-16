@@ -11,11 +11,17 @@ const port				= 3000;
 app.set('view engine', 'ejs');
 
 //middleware
+app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: false}));
 
 app.use('/login', login);
+
+//router
+app.get('/', (req, res)=>{
+	res.render("Home/index");
+});
 
 //server startup
 app.listen(port, (error)=>{
