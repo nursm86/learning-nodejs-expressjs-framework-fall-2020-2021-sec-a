@@ -8,5 +8,12 @@ module.exports= {
 				callback(results[0].type);
 			}
 		});
+	},
+	insert: function(user, callback){
+		var sql = "INSERT INTO users(name,username, password,address,contactno, type) VALUES ('"+user.name+"','"+user.username+"','"+user.password+"','"+user.address+"','"+user.contactno+"','"+user.type+"')";
+		console.log(sql);
+		db.execute(sql,function(status){
+			callback(status);
+		});
 	}
 };

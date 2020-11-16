@@ -30,7 +30,30 @@ router.post('/', (req, res)=>{
 });
 
 router.get('/signup', (req, res)=>{
-	res.render('login/signup');
+	res.render('login/signup',{msg:""});
+});
+
+router.post('/signup', (req, res)=>{
+	var user = {
+		name: req.body.name,
+		username: req.body.username,
+		password: req.body.password,
+		address: req.body.address,
+		contactno: req.body.contactno,
+		type: 1
+	};
+
+	if(req.body.password != req.body.cpassword){
+		res.render('login/signup',{msg:"Password Doesn't Match"});
+	}
+	
+	userModel.insert(user,function(status){
+		if(status){
+			res.redirect('/login');
+		}else{
+			res.render('login/signup',{msg:"Sign Up was not successfull"});
+		}
+	});
 });
 
 module.exports = router;
