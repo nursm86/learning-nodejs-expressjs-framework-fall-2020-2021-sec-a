@@ -11,7 +11,6 @@ module.exports= {
 	},
 	insert: function(user, callback){
 		var sql = "INSERT INTO users(name,username, password,address,contactno, type) VALUES ('"+user.name+"','"+user.username+"','"+user.password+"','"+user.address+"','"+user.contactno+"','"+user.type+"')";
-		console.log(sql);
 		db.execute(sql,function(status){
 			callback(status);
 		});
@@ -28,6 +27,12 @@ module.exports= {
 		var sql = "UPDATE users SET name='"+user.name+"',address='"+user.address+"',contactno='"+user.contactno+"',password='"+user.password+"' WHERE id = '"+user.id+"'";
 		db.execute(sql,function(status){
 			callback(status);
+		});
+	},
+	getAll: function(callback){
+		var sql = "select * from users";
+		db.getResults(sql, function(results){
+			callback(results);
 		});
 	}
 };

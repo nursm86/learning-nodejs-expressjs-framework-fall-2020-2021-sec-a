@@ -82,4 +82,10 @@ router.post('/addnewadmin',(req,res)=>{
 	});
 });
 
+router.get('/allusers',(req,res)=>{
+	userModel.getAll(function(results){
+		res.render('admin/allusers', {users: results});
+	});
+});
+
 module.exports = router;
