@@ -88,4 +88,24 @@ router.get('/allusers',(req,res)=>{
 	});
 });
 
+router.get('/deleteuser/:id', (req, res)=>{
+	userModel.getById(req.params.id,function(result){
+		var user = {
+			name: result.name,
+			username: result.username,
+			password: result.password,
+			address: result.address,
+			contactno: result.contactno
+		};
+		res.render('admin/deleteuser', user);
+	});
+});
+
+router.post('/deleteuser/:id', (req, res)=>{
+	userModel.delete(req.params.id,function(status){
+		if(status){
+			res.redirect('/admin/allusers');
+		}
+	});
+});
 module.exports = router;

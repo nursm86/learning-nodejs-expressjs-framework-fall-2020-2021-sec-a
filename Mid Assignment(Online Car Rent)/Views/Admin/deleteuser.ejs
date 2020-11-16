@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+	</head>
+	<body>
+		<div class="text-center">
+			<h1 class="header">Admin</h1>
+		</div>
+		<!--menu starts-->
+		<div class="text-center">
+			<a href="/Admin" class="btn btn-primary">Dashboard</a>
+			<a href="/admin/allcars" class="btn btn-warning">All Cars</a>
+			<a href="/admin/addnewcar" class="btn btn-danger">Add Car</a>
+			<a href="/admin/allusers" class="btn btn-warning">All Users</a>
+            <a href="/admin/addnewadmin" class="btn btn-info">Add New Admin</a>
+            <a href="/admin/renthistory" class="btn btn-info">See Rent History</a>
+            <a href="/admin/profile" class="btn btn-info">Profile</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+        
+        <form method="post">
+            <div class="center">
+                <h1 class="text text-center">User's Profile</h1>
+                <div class="form-group">
+                    <h4 class="text">Username : <%= username %> </h4> 
+                </div>
+                
+                <div class="form-group">
+                    <h4 class="text">Name : <%= name %> </h4> 
+                </div>
+    
+                <div class="form-group">
+                    <h4 class="text">Contact No : <%= contactno %> </h4> 
+                </div>
+                
+                <div class="form-group">
+                    <h4 class="text">Address : <%= address %> </h4> 
+                </div>
+    
+                <div class="form-group text-center">  
+                    <a href="/admin/allusers" class="btn btn-warning" value="Cancel">Cancel</a>
+                    <input type="submit" name="submit" class="btn btn-danger" value="Delete User" class="form-control">
+                </div>
+            </div>
+        </form>   
+	</body>
+</html>

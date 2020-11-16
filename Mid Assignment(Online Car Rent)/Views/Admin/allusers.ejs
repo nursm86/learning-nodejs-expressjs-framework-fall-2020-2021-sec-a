@@ -38,15 +38,15 @@
                                 <td><%= std.id %></td>
                                 <td><%= std.name %></td>
                                 <td><%= std.username %></td>
-                                <td><%= std.companyname %></td>
                                 <td><%= std.contactno %></td>
+                                <td><%= std.address %></td>
                                 <% if(std.type == 0){%>
                                     <td>Admin</td>
                                 <%}
                                 else{%>
                                     <td>User</td>
                                     <td>
-                                        <a href="/user/delete/<%= std.id %>" class="btn btn-danger">Delete</a>
+                                        <a href="/admin/deleteuser/<%= std.id %>" class="btn btn-danger">Delete</a>
                                     </td>
                                 <%}%>
                             </tr>
