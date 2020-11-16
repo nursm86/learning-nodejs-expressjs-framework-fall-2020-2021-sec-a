@@ -16,7 +16,7 @@ module.exports= {
 		});
 	},
 	update:function(car, callback){
-		//var sql = "UPDATE cars SET name='"+car.name+"',address='"+car.address+"',contactno='"+car.contactno+"',password='"+car.password+"' WHERE id = '"+car.id+"'";
+		var sql = "UPDATE cars SET name='"+car.name+"',description='"+car.description+"',type='"+car.type+"',rentprice='"+car.rentprice+"',image='"+car.image+"' WHERE id = '"+car.id+"'";
 		db.execute(sql,function(status){
 			callback(status);
 		});

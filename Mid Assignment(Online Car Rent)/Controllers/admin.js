@@ -135,4 +135,46 @@ router.post('/addnewcar',(req,res)=>{
 		}
 	});
 });
+
+router.get('/deletecar/:id', (req, res)=>{
+	carModel.delete(req.params.id,function(status){
+		if(status){
+			res.redirect('/admin/allcars');
+		}
+	});
+});
+
+router.get('/editcar/:id', (req, res)=>{
+	carModel.getById(req.params.id,function(result){
+		var car = {
+			id:req.params.id,
+			name: result.name,
+			rentprice: result.rentprice,
+			description: result.description,
+			type: result.type,
+			image: result.image
+		};
+		res.render('admin/editcar', car);
+	});
+});
+
+router.post('/editcar/:id',(req,res)=>{
+	var car = {
+		id:req.params.id,
+		name: req.body.name,
+		rentprice: req.body.rentprice,
+		description: req.body.description,
+		type: req.body.type,
+		image: req.body.image
+	};
+	carModel.update(car,function(status){
+		if(status){
+			res.redirect('/admin/allcars');
+		}
+		else{
+			res.render('Admin/editcar', car);
+		}
+	});
+});
+
 module.exports = router;

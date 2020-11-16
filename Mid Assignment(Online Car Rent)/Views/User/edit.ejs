@@ -5,21 +5,16 @@
 	</head>
 	<body>
 		<div class="text-center">
-			<h1 class="header">Admin</h1>
+			<h1 class="header">User</h1>
 		</div>
 		<!--menu starts-->
 		<div class="text-center">
-			<a href="/Admin" class="btn btn-primary">Dashboard</a>
-			<a href="/admin/allcars" class="btn btn-warning">All Cars</a>
-			<a href="/admin/addnewcar" class="btn btn-danger">Add Car</a>
-			<a href="/admin/allusers" class="btn btn-warning">All Users</a>
-            <a href="/admin/addnewadmin" class="btn btn-info">Add New Admin</a>
-            <a href="/admin/renthistory" class="btn btn-info">See Rent History</a>
-            <a href="/admin/profile" class="btn btn-info">Profile</a>
+			<a href="/user" class="btn btn-primary">Dashboard</a>
+            <a href="/user/renthistory" class="btn btn-info">See Rental History</a>
+            <a href="/user/profile" class="btn btn-info">Profile</a>
 			<a href="/logout" class="btn btn-danger">Logout</a>
-        </div>
-        
-        <div class="center">
+		</div>
+		<div class="center">
             <h1 class="text text-center">Edit Profile</h1>
             <form action="" method="post" class="form-horizontal form-material">
                 <div class="form-group">
@@ -53,10 +48,12 @@
                 </div>
 
                 <div class="form-group text-center">
-                    
-                    <input type="submit" name="editprofile" class="btn btn-warning" value="Update Profile" class="form-control">
+                    <a href="/admin/allcars" class="btn btn-warning" value="Cancel">Cancel</a>
+                    <input type="submit" name="editcar" class="btn btn-success" value="Update Car Information" class="form-control">
+                    <a href="/admin/deletecar" class="btn btn-danger" value="Cancel">Cancel</a>
                 </div>
             </form>
-        </div>   
+        </div>
+        </div>		
 	</body>
 </html>

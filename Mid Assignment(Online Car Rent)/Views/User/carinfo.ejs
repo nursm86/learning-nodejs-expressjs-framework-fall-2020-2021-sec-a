@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+	</head>
+	<body>
+		<div class="text-center">
+			<h1 class="header">User</h1>
+		</div>
+		<!--menu starts-->
+		<div class="text-center">
+			<a href="/user" class="btn btn-primary">Dashboard</a>
+            <a href="/user/renthistory" class="btn btn-info">See Rental History</a>
+            <a href="/user/profile" class="btn btn-info">Profile</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
+		</div>
+		<div class="center">
+            <h1 class="text text-center">Finalize The Car</h1>
+            <form method="post" class="form-horizontal form-material">
+                <div class="center">
+                    <img class="card-image" src="<%=image%>">
+                </div>
+                <div class="center">
+                    <h4 class="text">Car type : <%= type %> </h4>
+                </div>
+                <div class="center">
+                    <h4 class="text">Name : <%= name %> </h4> 
+                </div>
+                <div class="center">
+                    <h4 class="text">Rent (per Hour): <%= rentprice %> </h4> 
+                </div>
+                <div class="center">
+                    <h4 class="text">Description: <%= description %> </h4> 
+                </div>
+                <div class="form-group text-center">
+                    <a href="/user" class="btn btn-warning" value="Cancel">Cancel</a>
+                    <input type="submit" name="rentThecar" class="btn btn-success" value="Finalize" class="form-control">
+                </div>
+            </form>		
+	</body>
+</html>

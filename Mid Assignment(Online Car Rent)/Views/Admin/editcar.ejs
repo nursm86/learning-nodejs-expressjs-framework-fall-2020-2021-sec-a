@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+	</head>
+	<body>
+		<div class="text-center">
+			<h1 class="header">Admin</h1>
+		</div>
+		<!--menu starts-->
+		<div class="text-center">
+			<a href="/Admin" class="btn btn-primary">Dashboard</a>
+			<a href="/admin/allcars" class="btn btn-warning">All Cars</a>
+			<a href="/admin/addnewcar" class="btn btn-danger">Add Car</a>
+			<a href="/admin/allusers" class="btn btn-warning">All Users</a>
+            <a href="/admin/addnewadmin" class="btn btn-info">Add New Admin</a>
+            <a href="/admin/renthistory" class="btn btn-info">See Rent History</a>
+            <a href="/admin/profile" class="btn btn-info">Profile</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+        
+        <div class="center">
+            <h1 class="text text-center">Edit Car</h1>
+            <form method="post" class="form-horizontal form-material">
+
+                <div class="form-group">
+                    <h4 class="text">Select Car type</h4> 
+                    <select name="type" class="form-control">
+                        <option selected hidden>Select car type</option>
+                        <option value="Private Car"<% if(type =="Private Car"){%>selected<% } %> >Private Car</option>
+                        <option value="NOAH" <% if(type =="NOAH"){%>selected<% } %>>NOAH</option>
+                        <option value="Hiace" <% if(type =="Hiace"){%>selected<% } %>>Hiace</option>
+                        <option value="Micro Bus" <% if(type =="Micro Bus"){%>selected<% } %>>Micro Bus</option>
+                        <option value="Pick Up" <% if(type =="Pick Up"){%>selected<% } %>>Pick Up</option>
+                        <option value="other" <% if(type =="Other"){%>selected<% } %>>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h4 class="text">Name</h4> 
+                    <input type="text" name="name" class="form-control" value="<%=name%>">
+                </div>
+
+                <div class="form-group">
+                    <h4 class="text">Rent (per Hour)</h4> 
+                    <input type="text" name="rentprice" class="form-control" value="<%= rentprice %> ">
+                </div>
+
+                <div class="form-group">
+                    <h4 class="text">Description</h4> 
+                    <input type="text" name="description" class="form-control" value="<%= description %> ">
+                </div>
+                
+                <div class="form-group">
+                    <h4 class="text">Image</h4> 
+                    <input type="text" name="image" class="form-control" value="<%= image %> ">
+                </div>
+
+                <div class="form-group text-center">
+                    <a href="/admin/allcars" class="btn btn-warning" value="Cancel">Cancel</a>
+                    <input type="submit" name="editcarinfo" class="btn btn-success" value="Update Car Info" class="form-control">
+                    <a href="/admin/deletecar/<%= id %> " class="btn btn-danger" value="delete">Delete</a>
+                </div>
+            </form>
+        </div>   
+	</body>
+</html>
