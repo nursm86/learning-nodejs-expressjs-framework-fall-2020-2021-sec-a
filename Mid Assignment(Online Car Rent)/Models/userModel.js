@@ -15,5 +15,13 @@ module.exports= {
 		db.execute(sql,function(status){
 			callback(status);
 		});
+	},
+	getById: function(id, callback){
+		var sql = "select * from users where id='"+id+"'";
+		db.getResults(sql, function(results){
+			if(results.length >0 ){
+				callback(results[0]);
+			}
+		});
 	}
 };
