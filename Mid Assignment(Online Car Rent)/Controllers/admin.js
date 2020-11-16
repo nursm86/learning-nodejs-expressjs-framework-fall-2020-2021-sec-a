@@ -66,7 +66,6 @@ router.get('/addnewadmin', (req, res)=>{
 
 router.post('/addnewadmin',(req,res)=>{
 	var user = {
-		id:req.body.username,
 		name: req.body.name,
 		username: req.body.username,
 		password: req.body.password,
@@ -113,6 +112,27 @@ router.post('/deleteuser/:id', (req, res)=>{
 router.get('/allcars',(req,res)=>{
 	carModel.getAll(function(results){
 		res.render('admin/allcars', {cars: results});
+	});
+});
+
+router.get('/addnewcar',(req,res)=>{
+	res.render('admin/addnewcar');
+});
+
+router.post('/addnewcar',(req,res)=>{
+	var car = {
+		name: req.body.name,
+		rentprice: req.body.rentprice,
+		description: req.body.description,
+		type: req.body.type,
+		image: req.body.image
+	};
+	carModel.insert(car,function(status){
+		if(status){
+			res.redirect('/admin/allcars');
+		}else{
+			res.render('/admin/addnewcar',car);
+		}
 	});
 });
 module.exports = router;

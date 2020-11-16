@@ -2,7 +2,7 @@ const db = require('./db');
 
 module.exports= {
 	insert: function(car, callback){
-		var sql = "INSERT INTO cars(name,carname, password,address,contactno, type) VALUES ('"+car.name+"','"+car.carname+"','"+car.password+"','"+car.address+"','"+car.contactno+"','"+car.type+"')";
+		var sql = "INSERT INTO cars(name,rentprice, description,type,image) VALUES ('"+car.name+"','"+car.rentprice+"','"+car.description+"','"+car.type+"','"+car.image+"')";
 		db.execute(sql,function(status){
 			callback(status);
 		});
