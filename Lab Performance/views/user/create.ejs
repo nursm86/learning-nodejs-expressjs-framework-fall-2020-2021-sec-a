@@ -4,13 +4,13 @@
 	<title>Create User</title>
 </head>
 <body>
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Create New User</legend>
 			<table>
 				<tr>
 					<td>Name</td>
-					<td><input type="text" name="name"></td>
+					<td><input type="text" name="name" ></td>
 				</tr>
 				<tr>
 					<td>User Name</td>
@@ -27,6 +27,10 @@
 				<tr>
 					<td>Contact No</td>
 					<td><input type="text" name="contactno"></td>
+				</tr>
+				<tr>
+					<td>Upload Profile Picture :</td>
+					<td><input type="file" id="file" name="file"></td>
 				</tr>
 				<tr>
 					<td></td>
