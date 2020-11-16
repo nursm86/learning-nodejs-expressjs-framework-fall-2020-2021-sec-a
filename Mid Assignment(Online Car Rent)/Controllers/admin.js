@@ -1,5 +1,6 @@
 const express 	= require('express');
 const userModel = require.main.require('./models/userModel');
+const carModel  = require.main.require('./models/carModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -106,6 +107,12 @@ router.post('/deleteuser/:id', (req, res)=>{
 		if(status){
 			res.redirect('/admin/allusers');
 		}
+	});
+});
+
+router.get('/allcars',(req,res)=>{
+	carModel.getAll(function(results){
+		res.render('admin/allcars', {cars: results});
 	});
 });
 module.exports = router;

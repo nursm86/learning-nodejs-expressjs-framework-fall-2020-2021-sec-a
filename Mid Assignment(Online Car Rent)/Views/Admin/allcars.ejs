@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+	</head>
+	<body>
+		<div class="text-center">
+			<h1 class="header">Admin</h1>
+		</div>
+		<!--menu starts-->
+		<div class="text-center">
+			<a href="/Admin" class="btn btn-primary">Dashboard</a>
+			<a href="/admin/allcars" class="btn btn-warning">All Cars</a>
+			<a href="/admin/addnewcar" class="btn btn-danger">Add Car</a>
+			<a href="/admin/allusers" class="btn btn-warning">All Users</a>
+            <a href="/admin/addnewadmin" class="btn btn-info">Add New Admin</a>
+            <a href="/admin/renthistory" class="btn btn-info">See Rent History</a>
+            <a href="/admin/profile" class="btn btn-info">Profile</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+        
+        <div class="center">
+            <h3 class="text">All Users</h3>
+            <table class="table table-striped">
+                <thead>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Rent (Per Hour)</td>
+                    <td>Description</td>
+                    <td>Image</td>
+                    <td>Type</td>
+                    <td></td>
+                </thead>
+                <tbody>
+                    <% 
+                        cars.forEach( function(car){ %>
+                            <tr>
+                                <td><%= car.id %></td>
+                                <td><%= car.name %></td>
+                                <td><%= car.rentprice %></td>
+                                <td><%= car.description %></td>
+                                <td><img class="card-image" src="<%= car.image%>"></img></td>
+                                <td>
+                                    <a href="/admin/editcar/<%= car.id %>" class="btn btn-danger">view</a>
+                                </td>
+                            </tr>
+        
+                    <%
+                        }); 
+                    %>
+                </tbody>
+            </table>
+        </div>   
+	</body>
+</html>
