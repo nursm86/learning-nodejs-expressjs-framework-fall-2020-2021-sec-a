@@ -15,14 +15,14 @@ router.post('/', (req, res)=>{
 	};
 
 	userModel.validate(user, function(status){
-		if(status == 0){
-			res.cookie('uname', user.username);
-			res.cookie('type',0);
+		if(status.type == 0){
+			res.cookie('uid', status.id);
+			res.cookie('type',status.type);
 			res.redirect('/Admin');
 		}
-		else if(status == 1){
-			res.cookie('uname', res.username);
-			res.cookie('type',0);
+		else if(status.type == 1){
+			res.cookie('uid', status.id);
+			res.cookie('type',status.type);
 			res.send("Welcome User :"+user.username);
 		}
 		else{
