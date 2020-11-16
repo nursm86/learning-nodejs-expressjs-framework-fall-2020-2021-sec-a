@@ -59,4 +59,27 @@ router.post('/edit',(req,res)=>{
 	});
 });
 
+router.get('/addnewadmin', (req, res)=>{
+	res.render('admin/addnewadmin');
+});
+
+router.post('/addnewadmin',(req,res)=>{
+	var user = {
+		id:req.body.username,
+		name: req.body.name,
+		username: req.body.username,
+		password: req.body.password,
+		address: req.body.address,
+		contactno: req.body.contactno,
+		type: 0
+	};
+	userModel.insert(user,function(status){
+		if(status){
+			res.redirect('/admin/allusers');
+		}else{
+			res.render('/admin/addnewadmin',user);
+		}
+	});
+});
+
 module.exports = router;
