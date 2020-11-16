@@ -23,5 +23,11 @@ module.exports= {
 				callback(results[0]);
 			}
 		});
+	},
+	update:function(user, callback){
+		var sql = "UPDATE users SET name='"+user.name+"',address='"+user.address+"',contactno='"+user.contactno+"',password='"+user.password+"' WHERE id = '"+user.id+"'";
+		db.execute(sql,function(status){
+			callback(status);
+		});
 	}
 };
