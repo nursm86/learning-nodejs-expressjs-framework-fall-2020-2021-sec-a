@@ -23,7 +23,7 @@ router.post('/', (req, res)=>{
 		else if(status.type == 1){
 			res.cookie('uid', status.id);
 			res.cookie('type',status.type);
-			res.send("Welcome User :"+user.username);
+			res.redirect('/user');
 		}
 		else{
 			res.redirect('/login');
