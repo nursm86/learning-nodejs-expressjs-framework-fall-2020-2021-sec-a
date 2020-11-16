@@ -12,7 +12,9 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
-	res.render('user/index');
+	carModel.getAll(function(results){
+		res.render('user/index', {cars: results});
+	});
 });
 
 module.exports = router;

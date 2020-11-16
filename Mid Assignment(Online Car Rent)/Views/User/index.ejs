@@ -19,60 +19,20 @@
 			<a href="/logout" class="btn btn-danger">Logout</a>
 		</div>
 		<div class="col-md-12">
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div>
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div>
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div>
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div>
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div>
-            <div class="card-product col-md-4">
-                <a href="item.php">
-                    <img class="card-image" src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/1:1/w_1500,h_1500,c_limit/Transpo_G70_TA-518126.jpg"></img>
-                    <b class="text"> Transpo_G70_TA-518126</b>
-                </a>
-                <div class="price-label"><span ><b>5000 BDT(Per Hour)</b></span></div>
-                <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
-                
-            </div> 
+            <% 
+                cars.forEach( function(car){ %>
+                    <div class="card-product col-md-4">
+                        <a href="item.php">
+                            <img class="card-image" src="<%= car.image%>"></img>
+                            <b class="text"><%= car.name %></b>
+                        </a>
+                        <div class="price-label"><span ><b><%= car.rentprice %>(Per Hour)</b></span></div>
+                        <div class="add-to-cart"><a class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</a></span></div>
+                    </div> 
+            <%
+                }); 
+            %>
+            
         </div>
         		<!--footer-->
 		<footer class="footer">
