@@ -27,6 +27,10 @@ router.post('/', (req, res)=>{
 			res.redirect('/login');
 		}
 	});
-}); 
+});
+
+router.get('/signup', (req, res)=>{
+	res.render('login/signup');
+});
 
 module.exports = router;
