@@ -32,7 +32,7 @@
                         <option value="Hiace" <% if(type =="Hiace"){%>selected<% } %>>Hiace</option>
                         <option value="Micro Bus" <% if(type =="Micro Bus"){%>selected<% } %>>Micro Bus</option>
                         <option value="Pick Up" <% if(type =="Pick Up"){%>selected<% } %>>Pick Up</option>
-                        <option value="other" <% if(type =="Other"){%>selected<% } %>>Other</option>
+                        <option value="others" <% if(type =="Others"){%>selected<% } %>>Others</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -53,6 +53,15 @@
                 <div class="form-group">
                     <h4 class="text">Image</h4> 
                     <input type="text" name="image" class="form-control" value="<%= image %> ">
+                </div>
+
+                <div class="form-group">
+                    <h4 class="text">Availability</h4> 
+                    <select name="availability" class="form-control">
+                    <option <%if(availability == 0){%> selected <%}%> value="0">Availiable</option>
+                        <option <%if(availability == 1){%> selected <%}%> value="1">Busy</option>
+                        <option <%if(availability == 2){%> selected <%}%> value="2">Damaged</option>
+                    </select>
                 </div>
 
                 <div class="form-group text-center">

@@ -4,9 +4,7 @@ module.exports= {
 	validate: function(user, callback){
 		var sql = "select * from users where username='"+user.username+"' and password='"+user.password+"'";
 		db.getResults(sql, function(results){
-			if(results.length >0 ){
-				callback(results[0]);
-			}
+			callback(results);
 		});
 	},
 	insert: function(user, callback){
@@ -39,6 +37,14 @@ module.exports= {
 		var sql = "DELETE FROM users WHERE id = '"+id+"'";
 		db.execute(sql,function(status){
 			callback(status);
+		});
+	},
+	getUserName : function(user,callback){
+		var sql = "select * from users where "+user.field+"='"+user.value+"'";
+		db.getResults(sql, function(results){
+			if(results.length >0 ){
+				callback(results[0]);
+			}
 		});
 	}
 };

@@ -12,7 +12,7 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
-	carModel.getAll(function(results){
+	carModel.getAvailable(function(results){
 		res.render('user/index', {cars: results});
 	});
 });
@@ -84,6 +84,33 @@ router.post('/edit',(req,res)=>{
 		}
 		else{
 			res.render('user/edit', user);
+		}
+	});
+});
+
+router.post('/get',(req,res)=>{
+	var user = {
+		field: req.body.field,
+		value : req.body.val	
+	};
+	userModel.getUserName(user, function(results){
+		if(results!=null){
+			res.json({flag:true});
+		}else{
+			res.json({flag:false});
+		}
+	});
+});
+
+router.post('/getCarbyCategory',(req,res)=>{
+	var car = {
+		see : req.body.see
+	};
+	carModel.getCarbyCategory(car,function(results){
+		if(results!=null){
+			res.json({cars:results});
+		}else{
+			res.json({cars:false});
 		}
 	});
 });

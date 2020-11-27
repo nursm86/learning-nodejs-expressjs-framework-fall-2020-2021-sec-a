@@ -16,6 +16,7 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/profile',(req,res)=>{
+	console.log(req.cookies['uid']);
 	userModel.getById(req.cookies['uid'],function(result){
 		var user = {
 			name: result.name,
@@ -152,6 +153,7 @@ router.get('/editcar/:id', (req, res)=>{
 			rentprice: result.rentprice,
 			description: result.description,
 			type: result.type,
+			availability : result.availability,
 			image: result.image
 		};
 		res.render('admin/editcar', car);
@@ -165,6 +167,7 @@ router.post('/editcar/:id',(req,res)=>{
 		rentprice: req.body.rentprice,
 		description: req.body.description,
 		type: req.body.type,
+		availability : req.body.availability,
 		image: req.body.image
 	};
 	carModel.update(car,function(status){

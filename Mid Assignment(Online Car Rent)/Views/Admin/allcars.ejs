@@ -29,6 +29,7 @@
                     <td>Description</td>
                     <td>Image</td>
                     <td>Type</td>
+                    <td>Status</td>
                     <td></td>
                 </thead>
                 <tbody>
@@ -41,6 +42,13 @@
                                 <td><%= car.description %></td>
                                 <td><img class="card-image" src="<%= car.image%>"></img></td>
                                 <td><%=car.type%></td>
+                                <%if(car.availability == 0){%>
+                                    <td>Available</td>
+                                <%}else if(car.availability == 1){%>
+                                    <td>Busy</td>
+                                <%}else{%>
+                                    <td>Damaged</td>
+                                <%}%>
                                 <td>
                                     <a href="/admin/editcar/<%= car.id %>" class="btn btn-danger">view</a>
                                 </td>

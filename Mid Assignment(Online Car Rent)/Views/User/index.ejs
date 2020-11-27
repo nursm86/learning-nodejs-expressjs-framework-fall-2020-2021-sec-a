@@ -2,6 +2,13 @@
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+		<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src = "/assets/js/car.js"></script>
 	</head>
 	<body>
 		<div class="text-center">
@@ -14,10 +21,25 @@
             <a href="/user/profile" class="btn btn-info">Profile</a>
 			<a href="/logout" class="btn btn-danger">Logout</a>
 		</div>
-		<div class="col-md-12">
+
+		<div class="center">
+            <div class="form-group">
+                <select id="category" name="category" class="form-control">
+					<option value="">All</option>
+					<option value="Private Car">Private Car</option>
+					<option value="NOAH">NOAH</option>
+					<option value="Hiace">Hiace</option>
+					<option value="Micro Bus">Micro Bus</option>
+					<option value="Pick Up">Pick Up</option>
+					<option value="Others">Others</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-md-12" id="cars">
             <% 
                 cars.forEach( function(car){ %>
-                    <div class="card-product col-md-4">
+                    <div class='card-product col-md-4'>
                             <img class="card-image" src="<%= car.image%>"></img>
                             <b class="text"><%= car.name %></b>
                         <div class="price-label"><span ><b><%= car.rentprice %>(Per Hour)</b></span></div>

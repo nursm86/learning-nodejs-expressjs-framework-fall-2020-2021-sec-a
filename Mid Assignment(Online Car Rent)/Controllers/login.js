@@ -4,7 +4,10 @@ const userModel		= require.main.require('./models/userModel');
 const router 		= express.Router();
 
 router.get('/', (req, res)=>{
-	res.render('login/index');
+	var err = {
+		err_msg : req.session.errmsg
+	};
+	res.render('login/index',err);
 });
 
 router.post('/', (req, res)=>{
@@ -15,19 +18,23 @@ router.post('/', (req, res)=>{
 	};
 
 	userModel.validate(user, function(status){
-		if(status.type == 0){
-			res.cookie('uid', status.id);
-			res.cookie('type',status.type);
-			res.redirect('/Admin');
-		}
-		else if(status.type == 1){
-			res.cookie('uid', status.id);
-			res.cookie('type',status.type);
-			res.redirect('/user');
+		if(status.length > 0 ){
+			if(status[0].type == 0){
+				res.cookie('uid', status[0].id);
+				res.cookie('type',status[0].type);
+				res.redirect('/Admin');
+			}
+			else if(status[0].type == 1){
+				res.cookie('uid', status[0].id);
+				res.cookie('type',status[0].type);
+				res.redirect('/user');
+			}
 		}
 		else{
+			req.session.errmsg = "UserName or Password is not right";
 			res.redirect('/login');
 		}
+		
 	});
 });
 
@@ -47,15 +54,16 @@ router.post('/signup', (req, res)=>{
 
 	if(req.body.password != req.body.cpassword){
 		res.render('login/signup',{msg:"Password Doesn't Match"});
+	}else{
+		userModel.insert(user,function(status){
+			if(status){
+				req.session.errmsg = "Account Has been Create Please log in to your account";
+				res.redirect('/login');
+			}else{
+				res.render('login/signup',{msg:"Sign Up was not successfull"});
+			}
+		});
 	}
-	
-	userModel.insert(user,function(status){
-		if(status){
-			res.redirect('/login');
-		}else{
-			res.render('login/signup',{msg:"Sign Up was not successfull"});
-		}
-	});
 });
 
 module.exports = router;
