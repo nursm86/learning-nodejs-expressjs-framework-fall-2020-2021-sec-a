@@ -18,29 +18,8 @@
             <a href="/admin/profile" class="btn btn-info">Profile</a>
 			<a href="/logout" class="btn btn-danger">Logout</a>
 		</div>
-        <!--menu ends-->
-        <div>
-            <table  align="center">
-                <tr>
-                    <td>
-                        <div class="card">
-                        <span class="text-white"> Total Cars <br>
-                            <%= carCount %> 
-                        </span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="card">
-                        <span class="text-white"> Total Rented Cars <br>
-                            <%= rentCount %> 
-                        </span>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
         <div class="center">
-            <h3 class="text">Recent Rental History</h3>
+            <h3 class="text">Rental History</h3>
             <table class="table table-striped">
                 <thead>
                     <td>Car</td>
@@ -51,7 +30,7 @@
                 </thead>
                 <tbody>
                     <% 
-                        cars.forEach( function(std){ %>
+                        rents.forEach( function(std){ %>
                             <tr>
                                 <td><%= std.carName %></td>
                                 <td><%= std.name %></td>

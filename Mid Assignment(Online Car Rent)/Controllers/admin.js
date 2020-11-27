@@ -1,6 +1,7 @@
 const express 	= require('express');
 const userModel = require.main.require('./models/userModel');
 const carModel  = require.main.require('./models/carModel');
+const rentModel  = require.main.require('./models/rentModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -12,7 +13,18 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
-	res.render('Admin/index');
+	var carCounts;
+	var rentCounts;
+	carModel.getCount(function(carCount){
+		carCounts = carCount.total;
+		rentModel.getCount(function(rentCount){
+			rentCounts = rentCount.total;
+			rentModel.getRecent(function(results){
+				console.log(carCounts,rentCounts);
+				res.render('Admin/index',{carCount : carCounts, rentCount : rentCounts, cars : results});
+			});
+		});
+	});
 });
 
 router.get('/profile',(req,res)=>{
@@ -26,6 +38,12 @@ router.get('/profile',(req,res)=>{
 			contactno: result.contactno
 		};
 		res.render('admin/profile', user);
+	});
+});
+
+router.get('/renthistory',(req,res)=>{
+	rentModel.getAll(function(results){
+		res.render('Admin/history',{rents : results});
 	});
 });
 

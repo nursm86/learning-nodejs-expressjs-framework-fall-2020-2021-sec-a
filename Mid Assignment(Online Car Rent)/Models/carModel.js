@@ -15,6 +15,12 @@ module.exports= {
 			}
 		});
 	},
+	getCount : function(callback){
+		var sql = "SELECT COUNT(*) as total FROM cars";
+		db.getResults(sql, function(results){
+			callback(results[0]);
+		});
+	},
 	update:function(car, callback){
 		var sql = "UPDATE cars SET name='"+car.name+"',description='"+car.description+"',type='"+car.type+"',rentprice='"+car.rentprice+"',image='"+car.image+"',availability = '"+car.availability+"' WHERE id = '"+car.id+"'";
 		db.execute(sql,function(status){
