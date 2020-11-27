@@ -71,5 +71,37 @@ $(document).ready(function(){
 				
 			}
 		});
+    });
+    
+    $('#users').change(function(){
+        var see = $('#users').val();
+		$.ajax({
+			url: '/admin/getUser',
+			method: 'post',
+			datatype : 'json',
+            data : {'see' : see},
+			success:function(response){
+				var tbody = "";
+				response.users.forEach(element => {
+					tbody += '<tr>';
+                    tbody += '<td>'+element.id+'</td>';
+                    tbody += '<td>'+element.name+'</td>';
+                    tbody += '<td>'+element.username+'</td>';
+                    tbody += '<td>'+element.contactno+'</td>';
+                    tbody += '<td>'+element.address+'</td>';
+                    if(element.type == 0){
+                        tbody += '<td>Admin</td>';
+                    }else if(element.type == 1){
+                        tbody += '<td>User</td>';
+                        tbody += '<td><a href="/admin/deleteuser/<%= std.id %>" class="btn btn-danger">Delete</a></td>';
+                    }
+                    tbody += '</tr>';
+				});
+				$('#tbody').html(tbody);
+			},
+			error:function(response){
+				
+			}
+		});
 	});
 });

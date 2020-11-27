@@ -224,4 +224,17 @@ router.post('/getCar',(req,res)=>{
 	});
 });
 
+router.post('/getUser',(req,res)=>{
+	var user = {
+		see : req.body.see
+	};
+	userModel.getUser(user,function(results){
+		if(results!=null){
+			res.json({users:results});
+		}else{
+			res.json({users:false});
+		}
+	});
+});
+
 module.exports = router;

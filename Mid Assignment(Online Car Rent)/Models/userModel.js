@@ -46,5 +46,17 @@ module.exports= {
 				callback(results[0]);
 			}
 		});
+	},
+	getUser : function(user,callback){
+		var sql;
+		if(user.see == '*'){
+			sql = "select * from users ";
+		}
+		else{
+			sql = "select * from users where type = '"+user.see+"'";
+		}
+		db.getResults(sql, function(results){
+			callback(results);
+		});
 	}
 };
