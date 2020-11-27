@@ -180,4 +180,18 @@ router.post('/editcar/:id',(req,res)=>{
 	});
 });
 
+router.post('/getCar',(req,res)=>{
+	var car = {
+		see : req.body.see,
+		availability : req.body.availability
+	};
+	carModel.getCar(car,function(results){
+		if(results!=null){
+			res.json({cars:results});
+		}else{
+			res.json({cars:false});
+		}
+	});
+});
+
 module.exports = router;

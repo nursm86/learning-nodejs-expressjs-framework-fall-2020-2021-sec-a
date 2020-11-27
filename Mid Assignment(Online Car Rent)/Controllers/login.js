@@ -19,14 +19,14 @@ router.post('/', (req, res)=>{
 
 	userModel.validate(user, function(status){
 		if(status.length > 0 ){
+			res.cookie('uid', status[0].id);
+			res.cookie('type',status[0].type);
+			req.session.uid = status[0].id;
+			req.session.type = status[0].type;
 			if(status[0].type == 0){
-				res.cookie('uid', status[0].id);
-				res.cookie('type',status[0].type);
 				res.redirect('/Admin');
 			}
 			else if(status[0].type == 1){
-				res.cookie('uid', status[0].id);
-				res.cookie('type',status[0].type);
 				res.redirect('/user');
 			}
 		}

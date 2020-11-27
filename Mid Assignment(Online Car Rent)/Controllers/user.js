@@ -1,4 +1,6 @@
 const express 	= require('express');
+const session = require('express-session');
+const rentModel = require('../Models/rentModel');
 const userModel = require.main.require('./models/userModel');
 const carModel  = require.main.require('./models/carModel');
 const router 	= express.Router();
@@ -30,16 +32,39 @@ router.get('/carinfo/:id', (req, res)=>{
 	});
 });
 
+router.get('/renthistory',(req,res)=>{
+	rentModel.getById(req.session.uid,function(results){
+		res.render('User/history',{rents : results});
+	});
+});
+
 router.post('/carinfo/:id', (req, res)=>{
-	carModel.getById(req.params.id,function(result){
-		var car = {
-			name: result.name,
-			rentprice: result.rentprice,
-			description: result.description,
-			type: result.type,
-			image: result.image
-		};
-		res.render('user/carinfo', car);
+	var date = new Date().toISOString().slice(0,10);
+	var rent = {
+		c_id : req.params.id,
+		user_id : req.session.uid,
+		date : date,
+		total_price: req.body.rentprice,
+		p_method : req.body.paymethod,
+	};
+	rentModel.insert(rent,function(status){
+		if(status){
+			carModel.booked(req.params.id,function(status){
+				res.redirect('/user/renthistory');
+			});
+		}
+		else{
+			carModel.getById(req.params.id,function(result){
+				var car = {
+					name: result.name,
+					rentprice: result.rentprice,
+					description: result.description,
+					type: result.type,
+					image: result.image
+				};
+				res.render('user/carinfo', car);
+			});
+		}
 	});
 });
 

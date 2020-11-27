@@ -17,7 +17,12 @@ module.exports= {
 	},
 	update:function(car, callback){
 		var sql = "UPDATE cars SET name='"+car.name+"',description='"+car.description+"',type='"+car.type+"',rentprice='"+car.rentprice+"',image='"+car.image+"',availability = '"+car.availability+"' WHERE id = '"+car.id+"'";
-		console.log(sql);
+		db.execute(sql,function(status){
+			callback(status);
+		});
+	},
+	booked:function(id, callback){
+		var sql = "UPDATE cars SET availability = 1 WHERE id = '"+id+"'";
 		db.execute(sql,function(status){
 			callback(status);
 		});
@@ -37,7 +42,18 @@ module.exports= {
 	getCarbyCategory : function(car,callback){
 		var sql = "select * from cars where availability = 0 and type LIKE '%"+car.see+"%'";
 		db.getResults(sql, function(results){
-			console.log(results);
+			callback(results);
+		});
+	},
+	getCar : function(car,callback){
+		var sql;
+		if(car.availability == '*'){
+			sql = "select * from cars where type LIKE '%"+car.see+"%'";
+		}
+		else{
+			sql = "select * from cars where availability = '"+car.availability+"' and type LIKE '%"+car.see+"%'";
+		}
+		db.getResults(sql, function(results){
 			callback(results);
 		});
 	},

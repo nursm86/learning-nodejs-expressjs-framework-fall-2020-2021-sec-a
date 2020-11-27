@@ -19,18 +19,18 @@
             <form method="post" class="form-horizontal form-material">
                 <div class="center">
                     <img class="card-image" src="<%=image%>">
-                </div>
-                <div class="center">
-                    <h4 class="text">Car type : <%= type %> </h4>
-                </div>
-                <div class="center">
-                    <h4 class="text">Name : <%= name %> </h4> 
-                </div>
-                <div class="center">
-                    <h4 class="text">Rent (per Hour): <%= rentprice %> </h4> 
-                </div>
-                <div class="center">
-                    <h4 class="text">Description: <%= description %> </h4> 
+                    <h4 class="text"><strong>type :</strong><%= type %> </h4>
+                    <h4 class="text"><strong>Name : </strong><%= name %> </h4>
+                    <h4 class="text"><strong>Rent (per Day):</strong><%= rentprice %> </h4>
+                    <input type="number" name="rentprice" value="<%= rentprice%>" hidden/>
+                    <h4 class="text"><strong>Description: </strong><%= description %> </h4>
+                    <select class="text" name="paymethod" required>
+                        <option value="" hidden>Select Payment Method</option>
+                        <option value="0">Cash On Arrival</option>
+                        <option value="1">Bkash</option>
+                        <option value="2">Rocket</option>
+                        <option value="3">Dutch Bangla Bank</option>
+                    </select>
                 </div>
                 <div class="form-group text-center">
                     <a href="/user" class="btn btn-warning" value="Cancel">Cancel</a>

@@ -1,7 +1,14 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="/assets/styles/mystyle.css">
+        <link rel="stylesheet" href="/assets/styles/mystyle.css">
+        <link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.  5/jquery.mCustomScrollbar.min.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src = "/assets/js/admin.js"></script>
 	</head>
 	<body>
 		<div class="text-center">
@@ -20,19 +27,39 @@
         </div>
         
         <div class="center">
-            <h3 class="text">All Users</h3>
+            <div class="form-group">
+                <label>Select Car type</label>
+                <select id="category" name="category" class="form-control">
+					<option value="">All</option>
+					<option value="Private Car">Private Car</option>
+					<option value="NOAH">NOAH</option>
+					<option value="Hiace">Hiace</option>
+					<option value="Micro Bus">Micro Bus</option>
+					<option value="Pick Up">Pick Up</option>
+					<option value="Others">Others</option>
+                </select>
+                <label>Show Availibility</label>
+                <select id="availability" name="availability" class="form-control">
+					<option value="*">All</option>
+					<option value="0">Available</option>
+					<option value="1">Busy</option>
+					<option value="2">Damaged</option>
+				</select>
+            </div>
+            
+            <h3 class="text">All Cars</h3>
             <table class="table table-striped">
                 <thead>
                     <td>ID</td>
                     <td>Name</td>
-                    <td>Rent (Per Hour)</td>
+                    <td>Rent (Per Day)</td>
                     <td>Description</td>
                     <td>Image</td>
                     <td>Type</td>
                     <td>Status</td>
                     <td></td>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                     <% 
                         cars.forEach( function(car){ %>
                             <tr>
