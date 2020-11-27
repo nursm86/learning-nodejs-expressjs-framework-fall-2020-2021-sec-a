@@ -23,33 +23,26 @@
 			<a href="/logout" class="btn btn-danger">Logout</a>
 		</div>
 
-		<div class="center">
-            <div class="form-group">
-                <select id="category" name="category" class="form-control">
-					<option value="">All</option>
-					<option value="Private Car">Private Car</option>
-					<option value="NOAH">NOAH</option>
-					<option value="Hiace">Hiace</option>
-					<option value="Micro Bus">Micro Bus</option>
-					<option value="Pick Up">Pick Up</option>
-					<option value="Others">Others</option>
-				</select>
-			</div>
-		</div>
+        <div class="center">
+            <h1 class="text text-center">Add New Blog</h1>
+            <form action="" method="post" class="form-horizontal form-material">
+                <div class="form-group">
+                    <h4 class="text">Title</h4>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
 
-		<div class="col-md-12" id="cars">
-            <% 
-                cars.forEach( function(car){ %>
-                    <div class='card-product col-md-4'>
-                            <img class="card-image" src="<%= car.image%>"></img>
-                            <b class="text"><%= car.name %></b>
-                        <div class="price-label"><span ><b><%= car.rentprice %>(Per Day)</b></span></div>
-                        <a href="/user/carinfo/<%= car.id%>"><div class="add-to-cart"><class class="btn btn-success" style="width:185px;font-family:consolas;margin-top:5px;">Rent the Car</class></span></div></a>
-                    </div> 
-            <%
-                }); 
-            %>
-            
+                <div class="form-group">
+                    <h4 class="text">Description</h4> 
+                    <textarea class="text" name="description" rows="4" cols="82" required ></textarea>
+                </div>
+
+                <div class="form-group text-center">
+                    
+                    <input type="submit" name="addnewblog" class="btn btn-success" value="Add New Blog" class="form-control">
+                </div>
+            </form>
+        </div>   
+        
         </div>		
 	</body>
 </html>

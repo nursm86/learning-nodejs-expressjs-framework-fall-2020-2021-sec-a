@@ -9,7 +9,8 @@
 		</div>
 		<!--menu starts-->
 		<div class="text-center">
-			<a href="/Admin" class="btn btn-primary">Dashboard</a>
+            <a href="/Admin" class="btn btn-primary">Dashboard</a>
+            <a href="/admin/blogs" class="btn btn-warning">Blogs</a>
 			<a href="/admin/allcars" class="btn btn-warning">All Cars</a>
 			<a href="/admin/addnewcar" class="btn btn-danger">Add Car</a>
 			<a href="/admin/allusers" class="btn btn-warning">All Users</a>
@@ -55,12 +56,13 @@
                             <tr>
                                 <td><%= std.carName %></td>
                                 <td><%= std.name %></td>
-                                <% if(std.p_method == 0){%>
+                                <% if(std.method == 0){%>
                                     <td>Cash On Arrival</td>
                                 <%}
-                                else if(std.p_method == 1){%>
+                                else if(std.method == 1){%>
                                     <td>Bkash</td>
-                                else if(std.p_method == 2){%>
+                                <%}
+                                else if(std.method == 2){%>
                                     <td>Rocket</td>
                                 <%}else {%>
                                     <td>Dutch Bangla Bank</td>

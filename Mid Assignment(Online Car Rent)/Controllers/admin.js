@@ -2,6 +2,7 @@ const express 	= require('express');
 const userModel = require.main.require('./models/userModel');
 const carModel  = require.main.require('./models/carModel');
 const rentModel  = require.main.require('./models/rentModel');
+const blogModel  = require.main.require('./models/blogModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -20,7 +21,6 @@ router.get('/', (req, res)=>{
 		rentModel.getCount(function(rentCount){
 			rentCounts = rentCount.total;
 			rentModel.getRecent(function(results){
-				console.log(carCounts,rentCounts);
 				res.render('Admin/index',{carCount : carCounts, rentCount : rentCounts, cars : results});
 			});
 		});
@@ -57,6 +57,18 @@ router.get('/edit',(req,res)=>{
 			contactno: result.contactno
 		};
 		res.render('admin/edit', user);
+	});
+});
+
+router.get('/blogs',(req,res)=>{
+	blogModel.getAll(function(results){
+		res.render('admin/blogs',{blogs : results});
+	});
+});
+
+router.get('/deleteblog/:id',(req,res)=>{
+	blogModel.delete(req.params.id,function(status){
+		res.redirect('/admin/blogs');
 	});
 });
 

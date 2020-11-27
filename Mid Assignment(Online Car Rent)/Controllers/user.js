@@ -3,6 +3,7 @@ const session = require('express-session');
 const rentModel = require('../Models/rentModel');
 const userModel = require.main.require('./models/userModel');
 const carModel  = require.main.require('./models/carModel');
+const blogModel  = require.main.require('./models/blogModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -29,6 +30,40 @@ router.get('/carinfo/:id', (req, res)=>{
 			image: result.image
 		};
 		res.render('user/carinfo', car);
+	});
+});
+
+router.get('/createblog',(req,res)=>{
+	res.render('user/createblog');
+});
+
+router.post('/createblog',(req,res)=>{
+	var date = new Date().toISOString().slice(0,10);
+	var blog = {
+		u_id : req.session.uid,
+		date : date,
+		title : req.body.title,
+		description : req.body.description
+	};
+	blogModel.insert(blog,function(status){
+		if(status){
+			res.redirect('/user/blogs');
+		}
+		else{
+			res.redirect('/user/createblog');
+		}
+	});
+});
+
+router.get('/blogs',(req,res)=>{
+	blogModel.getAll(function(results){
+		res.render('user/blogs',{blogs : results, id : req.session.uid});
+	});
+});
+
+router.get('/deleteblog/:id',(req,res)=>{
+	blogModel.delete(req.params.id,function(status){
+		res.redirect('/user/blogs');
 	});
 });
 

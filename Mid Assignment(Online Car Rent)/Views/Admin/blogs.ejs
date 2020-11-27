@@ -18,32 +18,25 @@
             <a href="/admin/renthistory" class="btn btn-info">See Rent History</a>
             <a href="/admin/profile" class="btn btn-info">Profile</a>
 			<a href="/logout" class="btn btn-danger">Logout</a>
-        </div>
+		</div><br>
+        <!--menu ends-->
         
-        <form method="post">
-            <div class="center">
-                <h1 class="text text-center">User's Profile</h1>
-                <div class="form-group">
-                    <h4 class="text">Username : <%= username %> </h4> 
-                </div>
-                
-                <div class="form-group">
-                    <h4 class="text">Name : <%= name %> </h4> 
-                </div>
-    
-                <div class="form-group">
-                    <h4 class="text">Contact No : <%= contactno %> </h4> 
-                </div>
-                
-                <div class="form-group">
-                    <h4 class="text">Address : <%= address %> </h4> 
-                </div>
-    
-                <div class="form-group text-center">  
-                    <a href="/admin/allusers" class="btn btn-warning" value="Cancel">Cancel</a>
-                    <input type="submit" name="submit" class="btn btn-danger" value="Delete User" class="form-control">
-                </div>
-            </div>
-        </form>   
+        <div class="col-md-12" id="blogs">
+            <% 
+                blogs.forEach( function(blog){ %>
+                    <div class='card-product col-md-2'>
+                            <label class="header"><%= blog.title%></label>
+                            <br class="text"><%= blog.description %></>
+                        <div class="price-label"><span ><b><%= blog.name %></b></span></div>
+                        <div class="btn btn-success"><span ><b><%= blog.ud %></b></span></div>
+                        <a href="/admin/allusers"><div class="add-to-cart"><class class="btn btn-warning" style="width:185px;font-family:consolas;margin-top:5px;">View User</class></span></div></a>
+                        <a href="/admin/deleteblog/<%= blog.bid%>"><div class="add-to-cart"><class class="btn btn-danger" style="width:185px;font-family:consolas;margin-top:5px;">Delete Blog</class></span></div></a>
+                    </div> 
+            <%
+                }); 
+            %>
+            
+        </div>
+
 	</body>
 </html>

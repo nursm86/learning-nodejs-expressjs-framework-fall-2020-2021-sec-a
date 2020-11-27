@@ -16,7 +16,8 @@
 		</div>
 		<!--menu starts-->
 		<div class="text-center">
-			<a href="/user" class="btn btn-primary">Dashboard</a>
+            <a href="/user" class="btn btn-primary">Dashboard</a>
+            <a href="/user/blogs" class="btn btn-warning">Blogs</a>
             <a href="/user/renthistory" class="btn btn-info">See Rental History</a>
             <a href="/user/profile" class="btn btn-info">Profile</a>
 			<a href="/logout" class="btn btn-danger">Logout</a>
@@ -36,12 +37,13 @@
                         rents.forEach( function(std){ %>
                             <tr>
                                 <td><%= std.carName %></td>
-                                <% if(std.p_method == 0){%>
+                                <% if(std.method == 0){%>
                                     <td>Cash On Arrival</td>
                                 <%}
-                                else if(std.p_method == 1){%>
+                                else if(std.method == 1){%>
                                     <td>Bkash</td>
-                                else if(std.p_method == 2){%>
+                                <%}
+                                else if(std.method == 2){%>
                                     <td>Rocket</td>
                                 <%}else {%>
                                     <td>Dutch Bangla Bank</td>
